@@ -7,13 +7,12 @@ import ServerlessHttp from "serverless-http";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5555;
 
 connectDB();
 
 app.use(express.json());
 
-app.use("/api", notesRoutes);
+app.use("/api/notes", notesRoutes);
 
 // app.listen(PORT, () => {
 //   console.log("SERVER STARTED ON PORT:", PORT);
