@@ -1,7 +1,7 @@
 import express from "express";
 import { connectDB } from "../src/db/connection.js";
 import dotenv from "dotenv";
-import notesRoutes from "../src/routes/notesRoutes.js";
+import levelsRoutes from "../src/routes/levelsRoutes.js";
 import ServerlessHttp from "serverless-http";
 import cors from "cors";
 
@@ -14,7 +14,7 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
-app.use("/api/notes", notesRoutes);
+app.use("/api/notes", levelsRoutes);
 
 const handlerWrapper = ServerlessHttp(app);
 

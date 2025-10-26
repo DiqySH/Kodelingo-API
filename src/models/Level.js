@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const noteSchema = new mongoose.Schema(
+const levelSchema = new mongoose.Schema(
   {
     title: {
       type: String,
@@ -14,6 +14,6 @@ const noteSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Note = mongoose.model("Note", noteSchema);
+const Level = mongoose.model("Level", levelSchema);
 
-export default Note;
+export default Level;
