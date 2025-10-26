@@ -1,9 +1,11 @@
 [build]
   functions = "functions"
   publish = "."
-  command = "npm install"
+
+[functions]
+  node_bundler = "esbuild"
 
 [[redirects]]
-  from = "/api/*"
+  from = "/*"
   to = "/.netlify/functions/api"
   status = 200
