@@ -14,7 +14,7 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
-app.use("/api/notes", levelsRoutes);
+app.use("/api/levels", levelsRoutes);
 
 const handlerWrapper = ServerlessHttp(app);
 
