@@ -2,6 +2,7 @@ import express from "express";
 import { connectDB } from "./db/connection.js";
 import dotenv from "dotenv";
 import notesRoutes from "./routes/notesRoutes.js";
+import ServerlessHttp from "serverless-http";
 
 dotenv.config();
 
@@ -12,8 +13,10 @@ connectDB();
 
 app.use(express.json());
 
-app.use("/notes", notesRoutes);
+app.use("/.neltlify/functions/api", notesRoutes);
 
-app.listen(PORT, () => {
-  console.log("SERVER STARTED ON PORT:", PORT);
-});
+// app.listen(PORT, () => {
+//   console.log("SERVER STARTED ON PORT:", PORT);
+// });
+
+export const handler = ServerlessHttp(app);

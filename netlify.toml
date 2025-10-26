@@ -1,9 +1,9 @@
 [build]
-  functions = "netlify/functions"
-  command = "npm install && npm run build"
-  publish = "dist" # atau folder React kamu kalau pakai frontend
+  functions = "functions"
+  publish = "dist"
+  command = "npm run build"
 
 [[redirects]]
-  from = "/*"
+  from = "/api/*"
   to = "/.netlify/functions/api"
   status = 200

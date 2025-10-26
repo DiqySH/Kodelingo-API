@@ -1,7 +1,7 @@
 import express from "express";
-import { connectDB } from "../../db/connection.js";
+import { connectDB } from "../src/db/connection.js";
 import dotenv from "dotenv";
-import notesRoutes from "../../routes/notesRoutes.js";
+import notesRoutes from "../src/routes/notesRoutes.js";
 import ServerlessHttp from "serverless-http";
 
 dotenv.config();
@@ -13,10 +13,10 @@ connectDB();
 
 app.use(express.json());
 
-app.use("/api/notes", notesRoutes);
+app.use("/api", notesRoutes);
 
-app.listen(PORT, () => {
-  console.log("SERVER STARTED ON PORT:", PORT);
-});
+// app.listen(PORT, () => {
+//   console.log("SERVER STARTED ON PORT:", PORT);
+// });
 
 export const handler = ServerlessHttp(app);

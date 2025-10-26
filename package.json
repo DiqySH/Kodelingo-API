@@ -4,7 +4,9 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "nodemon src/api.js",
+    "start": "netlify-lambda serve src",
+    "build": "netlify-lambda build src"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +18,7 @@
     "express": "^5.1.0",
     "mongodb": "^6.20.0",
     "mongoose": "^8.19.2",
+    "netlify-lambda": "^2.0.16",
     "serverless-http": "^4.0.0"
   },
   "devDependencies": {
