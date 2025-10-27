@@ -31,8 +31,8 @@ export const getLevelById = async (req, res) => {
 
 export const createLevel = async (req, res) => {
   try {
-    const { title, content } = req.body;
-    const level = new Level({ title, content });
+    const { levelIndex, title, content } = req.body;
+    const level = new Level({ levelIndex, title, content });
 
     const savedLevel = await level.save();
     res.status(201).json(savedLevel);
@@ -46,10 +46,11 @@ export const createLevel = async (req, res) => {
 
 export const updateLevel = async (req, res) => {
   try {
-    const { title, content } = req.body;
+    const { levelIndex, title, content } = req.body;
     const updatedLevel = await Level.findByIdAndUpdate(
       req.params.id,
       {
+        levelIndex,
         title,
         content,
       },

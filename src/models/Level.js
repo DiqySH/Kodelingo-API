@@ -2,6 +2,10 @@ import mongoose from "mongoose";
 
 const levelSchema = new mongoose.Schema(
   {
+    levelIndex: {
+      type: String,
+      required: true,
+    },
     title: {
       type: String,
       required: true,
