@@ -2,6 +2,7 @@ import express from "express";
 import { connectDB } from "../src/db/connection.js";
 import dotenv from "dotenv";
 import levelsRoutes from "../src/routes/levelsRoutes.js";
+import adminsRoutes from "../src/routes/adminsRoutes.js";
 import ServerlessHttp from "serverless-http";
 import cors from "cors";
 
@@ -15,6 +16,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/levels", levelsRoutes);
+app.use("/api/admins", adminsRoutes);
 
 const handlerWrapper = ServerlessHttp(app);
 
