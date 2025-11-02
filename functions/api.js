@@ -1,9 +1,10 @@
 import express from "express";
 import { connectDB } from "../src/db/connection.js";
 import dotenv from "dotenv";
-import mapRoutes from "../src/routes/mapRoutes.js";
 import adminsRoutes from "../src/routes/adminsRoutes.js";
 import ServerlessHttp from "serverless-http";
+import entityRoutes from "../src/routes/entityRoutes.js";
+import cityRoutes from "../src/routes/cityRoutes.js";
 import cors from "cors";
 
 dotenv.config();
@@ -15,8 +16,9 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
-app.use("/api/maps", mapRoutes);
 app.use("/api/admins", adminsRoutes);
+app.use("/api/entities", entityRoutes);
+app.use("/api/cities", cityRoutes);
 
 const handlerWrapper = ServerlessHttp(app);
 
