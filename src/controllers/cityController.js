@@ -18,14 +18,23 @@ export const getCityByName = async (req, res) => {
     const entityNames = city.levels.map((lvl) => lvl.entityName);
     const entities = await Entity.find({ name: { $in: entityNames } });
 
-    const levelsWithEntity = city.levels.map((lvl) => ({
-      ...lvl,
-      entity: entities.find((e) => e.name === lvl.entityName),
-    }));
+    const levelsWithEntity = city.levels.map((lvl) => {
+      const entity = entities.find((e) => e.name === lvl.entityName);
+      return {
+        ...lvl.toObject(),
+        entity: entity ? entity.toObject() : null,
+      };
+    });
 
-    res.status(200).json({ ...city.toObject(), levels: levelsWithEntity });
+    res.status(200).json({
+      ...city.toObject(),
+      levels: levelsWithEntity,
+    });
   } catch (err) {
-    res.status(500).json({ message: "Error fetching city", error: err });
+    console.error("Error fetching city:", err);
+    res
+      .status(500)
+      .json({ message: "Error fetching city", error: err.message });
   }
 };
 
