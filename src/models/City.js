@@ -4,7 +4,6 @@ const citySchema = new mongoose.Schema({
   name: { type: String, required: true, unique: true },
   description: String,
   background: String,
-  music: String,
   levels: [
     {
       id: Number,
