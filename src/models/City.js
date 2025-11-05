@@ -9,7 +9,7 @@ const questionSchema = new mongoose.Schema({
 const levelSchema = new mongoose.Schema({
   id: { type: Number, required: true },
   entityName: { type: String, required: true },
-  type: { type: String, enum: ["enemy", "boss"], required: true },
+  type: { type: String, enum: ["enemy", "boss"] },
   hp: { type: Number, default: 0 },
   attackPower: { type: Number },
   questions: [questionSchema],
