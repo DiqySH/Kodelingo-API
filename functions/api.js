@@ -15,13 +15,16 @@ const app = express();
 connectDB();
 
 app.use(cors());
-app.use(express.json({ limit: "10mb" }));
-app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
-app.use("/api/admins", adminsRoutes);
-app.use("/api/entities", entityRoutes);
-app.use("/api/cities", cityRoutes);
-app.use("/api/upload", uploadRoutes);
+// app.use("/api/admins", adminsRoutes);
+// app.use("/api/entities", entityRoutes);
+// app.use("/api/cities", cityRoutes);
+// app.use("/api/upload", uploadRoutes);
+app.use("/api", async (req, res) => {
+  return res.status(200).json({
+    message: "HELLO!",
+  });
+});
 
 const handlerWrapper = ServerlessHttp(app);
 
