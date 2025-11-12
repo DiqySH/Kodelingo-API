@@ -13,12 +13,12 @@ connectDB();
 
 app.use(cors());
 
+app.use("/api/challenges", challengeRoutes);
 app.use("/api", async (req, res) => {
   return res.status(200).json({
     message: "HELLO!",
   });
 });
-app.use("/api/challenges", challengeRoutes);
 
 const handlerWrapper = ServerlessHttp(app);
 
