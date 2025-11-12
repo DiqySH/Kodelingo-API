@@ -3,6 +3,7 @@ import { connectDB } from "../src/db/connection.js";
 import dotenv from "dotenv";
 import ServerlessHttp from "serverless-http";
 import cors from "cors";
+import challengeRoutes from "../src/routes/challengeRoutes.js";
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ app.use("/api", async (req, res) => {
     message: "HELLO!",
   });
 });
+app.use("/api/challenges", challengeRoutes);
 
 const handlerWrapper = ServerlessHttp(app);
 
