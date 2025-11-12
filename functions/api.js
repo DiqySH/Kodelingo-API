@@ -12,6 +12,7 @@ const app = express();
 connectDB();
 
 app.use(cors());
+app.use(express.json());
 
 app.use("/api/challenges", challengeRoutes);
 app.use("/api", async (req, res) => {
