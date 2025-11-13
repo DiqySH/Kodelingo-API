@@ -4,7 +4,7 @@ const { Schema, model } = mongoose;
 
 const QuestionSchema = new Schema({
   text: { type: String, required: true },
-  type: { type: String, enum: ["multiple choice", "essay"], required: true },
+  type: { type: String, enum: ["multiple choice"], required: true },
   options: { type: [String], default: undefined },
   answer: { type: String, required: true },
 });
