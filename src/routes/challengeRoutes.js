@@ -9,6 +9,26 @@ router.use(async (req, res, next) => {
   next();
 });
 
+router.get("/from/:uid", async (req, res) => {
+  try {
+    const { uid } = req.params;
+
+    const challenges = await Challenge.find({ author: uid }).sort({
+      createdAt: -1,
+    });
+
+    if (!challenges || challenges.length === 0) {
+      return res
+        .status(404)
+        .json({ message: "No challenges found for this author" });
+    }
+
+    res.json(challenges);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 router.post("/", async (req, res) => {
   try {
     const { name, lang, author, difficulty, questions } = req.body;
